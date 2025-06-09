@@ -6,5 +6,68 @@
 </head>
 <body>
   <h1>こんにちは、世界！</h1>
+
+  <style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
+	}
+</style>
+
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //または false
+		embedded_svc.settings.language = ''; //たとえば、「en」または「en-US」を入力します
+
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(エキスパートとチャットにデフォルト設定)
+		//embedded_svc.settings.disabledMinimizedText = '...'; //(エージェントがオフラインにデフォルト設定)
+
+		//embedded_svc.settings.loadingText = ''; //(読み込み中にデフォルト設定)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(リリースのドメインを設定して、訪問者がチャットセッション中にサブドメインを移動できるようにします)
+
+		// チャット の設定
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+		//};
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //事前チャットフォームの項目の自動入力を設定
+		//embedded_svc.settings.fallbackRouting = []; //ボタン ID、ユーザー ID、または userId_buttonId の配列
+		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(デフォルトは [お問い合わせ])
+
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+		embedded_svc.init(
+			'https://yukaaraki-240531-774-demo.my.salesforce.com',
+			'https://yukaaraki-240531-774-demo.my.site.com/20250609',
+			gslbBaseURL,
+			'00DGC0000057UfZ',
+			'X20250606LiveAgent',
+			{
+				baseLiveAgentContentURL: 'https://c.la1-c1-it3.salesforceliveagent.com/content',
+				deploymentId: '572GC000000YUrR',
+				buttonId: '573GC000000YVYo',
+				baseLiveAgentURL: 'https://d.la1-c1-it3.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IGC000000oMMQ2A2_1974393194f',
+				isOfflineSupportEnabled: false
+			}
+		);
+	};
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://yukaaraki-240531-774-demo.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
 </body>
 </html>
