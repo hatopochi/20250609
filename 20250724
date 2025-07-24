@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>画像表示テスト</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    img {
+      max-width: 90%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>画像表示サンプル</h1>
+  <p>以下は指定された画像です：</p>
+
+  <img src="https://yukaaraki-240531-774-demo.my.site.com/resource/1753340125000/LiveAgent" alt="指定された画像">
+
+</body>
+</html>
